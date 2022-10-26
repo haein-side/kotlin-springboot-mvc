@@ -26,19 +26,23 @@ class PutApiController {
 
     @PutMapping(path = ["/put-mapping/object"])
     fun putMappingObject(@Valid @RequestBody userRequest: UserRequest, bindingResult: BindingResult): ResponseEntity<String> {
-
+                        // Valid는 Validate처럼 Controller 전체에 대한 검증이 아니라 userRequest와 bindingResult에 대해 검증함
+                        // bindingResult를 통해 valid 한 부분의 결과를 돌려받을 수 있음
+                        // Controller에 들어와서 바로 예외가 발생하는 게 아님
+                        // Controller에 들어와서 validation이 일어나고 그 결과가 bindingResult에 담김
+                        
         if(bindingResult.hasErrors()){
             // 500 error
             val msg = StringBuilder()
             bindingResult.allErrors.forEach {
-                val field = it as FieldError
-                val message = it.defaultMessage
+                val field = it as FieldError // 어떤 필드가 잘못 되었는지 출력, it에 ObjectError와 message가 모두 담김, field -> fieldError로 형변환
+                val message = it.defaultMessage // data class에서 따로 message 설정해줄 수 있음
                 msg.append(field.field+" : "+message+"\n")
             }
             return ResponseEntity.badRequest().body(msg.toString())
         }
 
-        return ResponseEntity.ok("")
+        return ResponseEntity.ok("") // 에러 없다면 okay 리턴
         // 0. Response
        /* return UserResponse().apply {
             // 1. result

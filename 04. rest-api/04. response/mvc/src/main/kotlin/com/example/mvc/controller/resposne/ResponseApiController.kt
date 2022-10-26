@@ -41,7 +41,7 @@ class ResponseApiController {
     }
     // 2. post 200
 
-    @PostMapping("")
+    @PostMapping("") 
     fun postMapping(@RequestBody userRequest: UserRequest?): ResponseEntity<Any> {
         return ResponseEntity.status(200).body(userRequest) // object mapper -> object -> json
     }

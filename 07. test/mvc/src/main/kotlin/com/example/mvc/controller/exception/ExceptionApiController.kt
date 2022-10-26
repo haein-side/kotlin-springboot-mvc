@@ -110,6 +110,7 @@ class ExceptionApiController {
     }
 
 
+    // 컨트롤러 내부에서 예외처리해주는 것
     @ExceptionHandler(value = [IndexOutOfBoundsException::class])
     fun indexOutOfBoundsException(e: IndexOutOfBoundsException): ResponseEntity<String> {    // 200 OK
         println("controller exception handler")
