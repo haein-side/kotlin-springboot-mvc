@@ -1,4 +1,4 @@
-package com.example.mvc.model.http
+ package com.example.mvc.model.http
 
 import com.fasterxml.jackson.annotation.JsonProperty
 import com.fasterxml.jackson.databind.PropertyNamingStrategy

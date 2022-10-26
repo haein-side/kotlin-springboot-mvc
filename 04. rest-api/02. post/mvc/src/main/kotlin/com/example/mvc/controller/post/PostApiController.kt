@@ -17,10 +17,10 @@ class PostApiController {
         return "request-mapping"
     }
 
-    // object mapper
+    // Post 방식은 body에 내용을 담아서 요청할 수 있음
+    // object mapper : json과 object를 받아줄 때 사용
     // json -> object
     // object -> json
-
     @PostMapping("/post-mapping/object")
     fun postMappingObject(@RequestBody userRequest: UserRequest): UserRequest{
         // json -> object

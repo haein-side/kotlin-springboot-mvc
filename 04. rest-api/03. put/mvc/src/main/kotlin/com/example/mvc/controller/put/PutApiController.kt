@@ -19,6 +19,10 @@ class PutApiController {
         return "request-mapping - put method"
     }
 
+    // Put은 Post처럼 requestBody를 쓸 수 있음
+    // 용도가 조금 다를 뿐!
+    // userRequest 요청이 들어왔을 때 없으면 새로 만들고 이미 있으면 수정해줌!
+    // 그래서 update해주는 용도로 많이 쓰이는 것 같음!!
     @PutMapping(path = ["/put-mapping/object"])
     fun putMappingObject(@RequestBody userRequest: UserRequest): UserResponse{
 
